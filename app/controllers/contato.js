@@ -41,5 +41,18 @@ module.exports = function() {
 		}
 	}
 
+	controller.removeContato = function(req, res){
+
+		/*O vetor contatos é filtrado, de modo a excluir o
+		contato cujo id é passado como parâmetro. Em seguida,
+		o subconjunto filtrado sobrescreve o conjunto original*/ 
+		contatos = contatos.filter(function(contato){
+			return contato._id != req.params.id;
+		});
+
+		// HTTP 204: Ok, mas não há conteudo para retornar na resposta
+		res.status(204).end();
+	}
+
 	return controller;
 };
