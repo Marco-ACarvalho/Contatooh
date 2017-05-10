@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Fausto G. Cintra <fausto@fgcintra.pro.br>",
+  "author": "Marco",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.5.5",
     "express": "^4.14.1"
   }
 }
