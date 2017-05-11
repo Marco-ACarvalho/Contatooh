@@ -3,8 +3,6 @@ angular.module('contatooh').controller('ContatoController',
       
             var mensagem = {};
 
-            //var Contato = $resource('contatos/:id');
-
             if($routeParams.contatoId){
                   Contato.get({id: $routeParams.contatoId},
                         function(contato){
@@ -42,4 +40,8 @@ angular.module('contatooh').controller('ContatoController',
                   );
             }
             
+            Contato.query(function(contatos){
+                  $scope.contatos = contatos;
+            });
+
       });
