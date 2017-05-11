@@ -1,7 +1,7 @@
 angular.module('contatooh').controller('ContatosController',
-    function($scope, /* $http */ $resource) {
+    function($scope, /* $http */ $resource, Contato) {
         
-        var Contato = $resource('contatos/:id');
+        //var Contato = $resource('contatos/:id');
 
         $scope.mensagem = {};
 

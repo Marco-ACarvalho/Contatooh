@@ -6,7 +6,8 @@ module.exports = function(app) {
 	app.delete('/contatos/:id', controller.removeContato);
 	*/
 	app.route('/contatos')
-		.get(controller.listaContatos);
+		.get(controller.listaContatos)
+		.post(controller.salvaContato);
 
 	app.route('/contatos/:id')
 		.get(controller.obtemContato)
