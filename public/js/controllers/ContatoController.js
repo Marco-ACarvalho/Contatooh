@@ -1,5 +1,21 @@
-angular.module('contatooh').controller('ContatoController', function($scope, $routeParams) {
+angular.module('contatooh').controller('ContatoController',
+      function($scope, $routeParams, $resource) {
       
-      console.log($routeParams.contatoId);
+            var mensagem = {};
 
-   });
+            var Contato = $resource('contatos/:id');
+
+            Contato.get({id: $routeParams.contatoId},
+                  function(contato){
+                        $scope.contato = contato;
+                  },
+                  function(erro){
+                        $scope.mensagem = {
+                              texto: 'Não foi possivel obter o contato',
+                              classe: 'danger'
+                        };
+                        console.log(erro);
+                  }
+            );
+
+      });
