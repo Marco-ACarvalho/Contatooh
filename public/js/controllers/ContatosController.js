@@ -24,11 +24,12 @@ angular.module('contatooh').controller('ContatosController',
         buscaContatos();
 
         $scope.remover = function(contato){
+            var nomeDel = contato.nome;
             var idDel = contato._id;
             Contato.delete({id: idDel},
                 function() { //Callback se der certo
                     $scope.mensagem = {
-                        texto: 'Contato #' + idDel + ' excluido',
+                        texto: 'Contato #' + nomeDel + ' excluido',
                         classe: 'info'
                     };
                     buscaContatos();
