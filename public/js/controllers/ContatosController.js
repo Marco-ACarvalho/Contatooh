@@ -27,7 +27,7 @@ angular.module('contatooh').controller('ContatosController',
             Contato.delete({id: idDel},
                 function() { //Callback se der certo
                     $scope.mensagem = {
-                        texto: 'Contato #' + nomeDel + ' excluido',
+                        texto: 'Contato \'' + nomeDel + '\' excluido',
                         classe: 'info'
                     };
                     buscaContatos();
