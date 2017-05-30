@@ -4,7 +4,7 @@ var findOrCreate = require('mongoose-findorcreate');
 
 module.export = function(){
 
-    var schema = mongose.Schema({
+    var schema = mongoose.Schema({
         login: {
             type: String,
             required: true,

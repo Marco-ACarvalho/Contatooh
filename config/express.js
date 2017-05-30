@@ -25,7 +25,7 @@ module.exports = function() {
 		.into(app);
 
 	
-	app.use(cookieParse());
+	app.use(cookieParser());
 
 	app.use(session(
 		{
