@@ -12,6 +12,19 @@
       	<title>Bem-vindo!</title>
 	</head>
 	<body>
+		
+		<!-- Este bloco só aparecerá quando houver um usuario logado -->
+		<% if(usuarioLogado.length > 0) { %>
+			<div class="text-right">
+				<p>
+					Logado como:
+					<span id="usuario-logado">
+						<%= usuarioLogado %>
+					</span>
+					<a href="/logout">Logout</a>
+				</p>
+			</div>
+		<% } %>
 
 		<div ng-view></div>
 
@@ -20,6 +33,7 @@
 		<script src="vendor/angular-resource/angular-resource.min.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/services/ContatoService.js"></script>
+		<script src="js/services/InterceptorService.js"></script>
 		<script src="js/controllers/ContatosController.js"></script>
 		<script src="js/controllers/ContatoController.js"></script>
 

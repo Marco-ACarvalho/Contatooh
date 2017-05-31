@@ -1,7 +1,7 @@
 var http = require('http');
 var app = require('./config/express')(); // Cuidado: há dois parênteses vazios aqui
 
-require('./config/passport')();
+require('./config/passport')(/* Parênteses vazios aqui */);
 
 var dbConn = require('./config/database');
 dbConn('mongodb://localhost/contatooh')

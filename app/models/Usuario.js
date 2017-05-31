@@ -1,10 +1,9 @@
-var moongose = require('mongoose');
-
+var mongoose = require('mongoose');
 var findOrCreate = require('mongoose-findorcreate');
 
-module.export = function(){
+module.exports = function() {
 
-    var schema = mongose.Schema({
+    var schema = mongoose.Schema({
         login: {
             type: String,
             required: true,
@@ -22,6 +21,6 @@ module.export = function(){
         }
     });
 
-    schema.plugin(findOrCreate)
-    return mongoose.model('Usuario',schema);
+    schema.plugin(findOrCreate);
+    return mongoose.model('Usuario', schema);
 }
