@@ -1,3 +1,5 @@
+var sanitize  = require('mongo-sanitize');
+
 module.exports = function(app) {
 	
 	var Contato = app.models.contato;
@@ -33,7 +35,10 @@ module.exports = function(app) {
 	};
 
 	controller.removeContato = function(req, res){
-		Contato.remove({_id: req.params.id}).exec().then(
+		// Remove do ID eventuais operadores do MongoDB
+		// que poderiam causar exclusões maliciosas no BD
+		var id = sanitize(req.params.id);
+		Contato.remove({_id: id}).exec().then(
 			function(){
 				// HTTP 204: Ok, sem conteudo posterior
 				res.status(204).end();
@@ -46,8 +51,16 @@ module.exports = function(app) {
 
 	controller.salvaContato = function(req, res) {
 		
+		// Selecionando apenas os campos que estão
+		// previstos no esquema do BD
+		var dados = {
+			nome: req.body.nome,
+			email: req.body.email,
+			emergencia: req.body.emergencia || null
+		};
+
 		if(req.body._id){ //tem id, então é uma atualização
-			Contato.findByIdAndUpdate(req.body._id, req.body)
+			Contato.findByIdAndUpdate(req.body._id, dados)
 				.exec().then(
 					function(contato){
 						res.json(contato);
@@ -62,7 +75,7 @@ module.exports = function(app) {
 		}
 		else{ //não tem id, então é uma inserção
 
-			Contato.create(req.body).then(
+			Contato.create(dados).then(
 				function(contato){
 					//HTTP 201: criado
 					res.status(201).json(contato);
