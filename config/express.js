@@ -34,7 +34,6 @@ module.exports = function() {
 	app.use(passport.initialize());
 	app.use(passport.session());
 
-<<<<<<< HEAD
 	app.use(helmet());
 
 	//esconde a ferramente em que o site foi feito
@@ -55,8 +54,6 @@ module.exports = function() {
 	//ira tentar executa-lo
 	app.use(helmet.noSniff());
 
-=======
->>>>>>> 0d69e88355be741a0b79b3303af95d11677fb336
 	load('models', {cwd: 'app'})
 		.then('controllers')
 		.then('routes')
