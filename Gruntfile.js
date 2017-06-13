@@ -1,6 +1,7 @@
 module.exports = function(grunt){
 
     grunt.initConfig({
+
         copy: {
             project: {
                 expand: true, // Desce pelos subdiretorios
@@ -10,19 +11,42 @@ module.exports = function(grunt){
                 dest: 'dist' // O destino da copia será a pasta dist
             }
         },
+        
         clean: {
             dist: {
                 src: 'dist'
             }
-        } 
+        },
+        
+        useminPrepare: {
+            html: 'dist/app/views/**/*.ejs',
+            options: {
+                root: 'dist/public',
+                dest: 'dist/public'
+            }
+        },
+        
+        usemin: {
+            html: 'dist/app/views/**/*.ejs'
+        },
+
+        ngAnnotate: {
+            scripts: {
+                expand: true,
+                scr: ['dist/public/js/**/*.js']
+            }
+        }
     });
 
-    grunt.registerTask('default', ['dist']);
+    grunt.registerTask('default', ['dist', 'minifica']);
     grunt.registerTask('dist', ['clean', 'copy']);
+    grunt.registerTask('minifica', ['useminPrepare', 'ngAnnotate', 'concat', 'uglify', 'cssmin', 'usemin']);
+    
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-ng-annotate');
 };

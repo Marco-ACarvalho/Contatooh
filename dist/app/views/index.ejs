@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="contatooh">
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		
+		<!-- build: css css/index.min.css -->
+		<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap-theme.css" />
+		<!-- endbuild -->
+
+		<meta charset="utf-8" />
+
+      	<title>Bem-vindo!</title>
+	</head>
+	<body>
+		
+		<!-- Este bloco só aparecerá quando houver um usuario logado -->
+		<% if(usuarioLogado.length > 0) { %>
+			<div class="text-right">
+				<p>
+					Logado como:
+					<span id="usuario-logado">
+						<%= usuarioLogado %>
+					</span>
+					<a href="/logout">Logout</a>
+				</p>
+			</div>
+		<% } %>
+
+		<div ng-view></div>
+
+		<!-- build:js js/index.min.js -->
+		<script src="vendor/angular/angular.min.js"></script>
+		<script src="vendor/angular-route/angular-route.min.js"></script>
+		<script src="vendor/angular-resource/angular-resource.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/services/ContatoService.js"></script>
+		<script src="js/services/InterceptorService.js"></script>
+		<script src="js/controllers/ContatosController.js"></script>
+		<script src="js/controllers/ContatoController.js"></script>
+		<!-- endbuild -->
+
+	</body>
+</html>
